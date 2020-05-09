@@ -10,6 +10,7 @@ const person = {
 	greet: function () {
 		alert('Made it!');
 	},
+	2.4: 'Merhaba',
 };
 
 // delete person.age;
@@ -18,4 +19,4 @@ const person = {
 
 person.isAdmin = true;
 
-console.log(person['first name']);
+console.log(person);
