@@ -1,27 +1,30 @@
-const movieList = document.getElementById('movie-list');
+const addMovieBtn = document.getElementById('add-movie-btn');
+const searchMovie = document.getElementById('search-movie');
 
-movieList.style['background-color'] = 'red';
-movieList.style.display = 'block';
+const movies = [];
 
-const userChosenKeyName = 'level';
+const addMovieHandler = () => {
+	const title = document.getElementById('title').value;
+	const extraName = document.getElementById('extra-name').value;
+	const extraValue = document.getElementById('extra-value').value;
 
-const person = {
-	'first name': 'Appsius',
-	age: 24,
-	hobbies: ['Coding', 'Calligraphy'],
-	[userChosenKeyName]: 4,
-	greet: function () {
-		alert('Made it!');
-	},
-	2.4: 'Merhaba',
+	if (
+		title.trim() === '' ||
+		extraName.trim() === '' ||
+		extraValue.trim() === ''
+	) {
+		return;
+	}
+
+	const newMovie = {
+		info: {
+			[extraName]: extraValue,
+		},
+		id: Math.random() * 100000,
+	};
+
+	movies.push(newMovie);
+	console.log(newMovie);
 };
 
-// delete person.age;
-// person.age = undefined;
-// person.age = null;
-
-const keyName = 'first name';
-
-person.isAdmin = true;
-
-console.log(person[keyName]);
+addMovieBtn.addEventListener('click', addMovieHandler);
