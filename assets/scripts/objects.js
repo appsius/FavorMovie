@@ -21,11 +21,14 @@ const renderMovies = (filter = '') => {
 
 	filteredMovies.forEach((movie) => {
 		const movieEl = document.createElement('li');
-		let text = movie.info.title + ' - ';
+		const { info, ...otherProps } = movie;
+		console.log(otherProps);
+		const { title: movieTitle } = info;
 
-		for (let key in movie.info) {
+		let text = movieTitle + ' - ';
+		for (let key in info) {
 			if (key !== 'title') {
-				text += `${key}: ${movie.info[key]}`;
+				text += `${key}: ${info[key]}`;
 			}
 		}
 
@@ -52,7 +55,7 @@ const addMovieHandler = () => {
 			title,
 			[extraName]: extraValue,
 		},
-		id: Math.random() * 100000,
+		id: (Math.random() * 100000).toString(),
 	};
 
 	movies.push(newMovie);
